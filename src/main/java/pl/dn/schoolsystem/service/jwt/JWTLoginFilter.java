@@ -28,6 +28,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 	@Autowired
 	UserService userService = new UserServiceImpl();
 	
+	@Autowired
 	public JWTLoginFilter(String url, AuthenticationManager authManager) {
 		super(new AntPathRequestMatcher(url));
 		setAuthenticationManager(authManager);
