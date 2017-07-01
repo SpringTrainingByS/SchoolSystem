@@ -20,7 +20,6 @@ import pl.dn.schoolsystem.service.UserService;
 
 @Service
 @Transactional
-@ComponentScan
 public class UserServiceImpl implements UserService {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
@@ -39,7 +38,6 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	public User findByUsername(String username) {
-		if (userDao == null) System.out.println("UserDao jest nullem");
         return userDao.findByUsername(username);
     }
 

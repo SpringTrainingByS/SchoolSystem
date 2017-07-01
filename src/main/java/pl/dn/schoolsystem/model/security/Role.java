@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Role {
 
@@ -18,9 +20,12 @@ public class Role {
 	private String name;
 	
 	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
 	private Set<UserRole> userRoles = new HashSet<>();
 
 	public Role() {}
+	
+	//ja to tylko zostawię
 
 	public int getRoleId() {
 		return roleId;

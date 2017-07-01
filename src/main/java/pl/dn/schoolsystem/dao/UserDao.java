@@ -3,11 +3,11 @@ package pl.dn.schoolsystem.dao;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import pl.dn.schoolsystem.model.User;
 
-@Component
+@Repository
 public interface UserDao extends CrudRepository<User, Long>{
 	User findByUsername(String username);
     User findByEmail(String email);

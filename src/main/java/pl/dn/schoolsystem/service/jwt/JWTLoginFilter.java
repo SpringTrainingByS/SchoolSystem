@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,20 +19,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pl.dn.schoolsystem.model.User;
 import pl.dn.schoolsystem.service.UserService;
-import pl.dn.schoolsystem.service.impl.UserServiceImpl;
 
-@ComponentScan
+
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 
 	@Autowired
-	UserService userService = new UserServiceImpl();
+	UserService userService; 
 	
-	@Autowired
 	public JWTLoginFilter(String url, AuthenticationManager authManager) {
 		super(new AntPathRequestMatcher(url));
 		setAuthenticationManager(authManager);
 	}
-	
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest req,
@@ -42,8 +38,35 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 		
 		System.out.println("Jestem w JwtLogginFilter.attemptAuthentication -------------------------------------");
 		
-		AccountCredentials creds = new ObjectMapper()
-			.readValue(req.getInputStream(), AccountCredentials.class);
+		System.out.println("Dodawanie nagłówków do odpowiedzi.");
+		
+		if (res.getHeader("Access-Control-Allow-Origin") == null) {
+			res.addHeader("Access-Control-Allow-Origin", "*");
+		}
+		if (res.getHeader("Access-Control-Allow-Headers") == null) {
+			res.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, access-control-allow-origin");
+		}
+		if (res.getHeader("Access-Control-Expose-Headers") == null) {
+			res.addHeader("Access-Control-Expose-Headers", "Authorization");
+		}
+		
+		if (req.getInputStream() == null) {
+			throw new ServletException("request input stream() is null");
+		}
+		
+		AccountCredentials creds;
+//		= new ObjectMapper()
+//			.readValue(req.getInputStream(), AccountCredentials.class);
+		
+		try {
+			creds = new ObjectMapper()
+					.readValue(req.getInputStream(), AccountCredentials.class);
+		}
+		catch (Exception e) {
+			return null;
+		}
+		
+		
 		
 		User user = userService.findByUsername(creds.getUsername());
 		
@@ -51,7 +74,7 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 				new UsernamePasswordAuthenticationToken(
 						creds.getUsername(),
 						creds.getPassword(),
-						user.getAuthorities()
+						 user != null ? user.getAuthorities() : null
 						)
 		);
 	}
@@ -64,7 +87,8 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 		System.out.println("Jestem w JWTLogginFilter.successfulAuthentication -------------------------------------- ");
 		
 		System.out.println("authResult.getName(): " + authResult.getName());
-		TokenAuthenticationService.addAuthentication(response, authResult.getName());
+		
+		TokenAuthenticationService.addAuthentication(response, authResult);
 		
 	}
 	
