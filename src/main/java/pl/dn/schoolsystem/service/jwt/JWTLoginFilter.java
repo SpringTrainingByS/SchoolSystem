@@ -21,7 +21,7 @@ import pl.dn.schoolsystem.model.User;
 import pl.dn.schoolsystem.service.UserService;
 
 
-public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
+public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 
 	@Autowired
 	UserService userService; 
@@ -38,17 +38,17 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter{
 		
 		System.out.println("Jestem w JwtLogginFilter.attemptAuthentication -------------------------------------");
 		
-		System.out.println("Dodawanie nagłówków do odpowiedzi.");
+		//System.out.println("Dodawanie nagłówków do odpowiedzi.");
 		
-		if (res.getHeader("Access-Control-Allow-Origin") == null) {
-			res.addHeader("Access-Control-Allow-Origin", "*");
-		}
-		if (res.getHeader("Access-Control-Allow-Headers") == null) {
-			res.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, access-control-allow-origin");
-		}
-		if (res.getHeader("Access-Control-Expose-Headers") == null) {
-			res.addHeader("Access-Control-Expose-Headers", "Authorization");
-		}
+//		if (res.getHeader("Access-Control-Allow-Origin") == null) {
+//			res.addHeader("Access-Control-Allow-Origin", "*");
+//		}
+//		if (res.getHeader("Access-Control-Allow-Headers") == null) {
+//			res.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, access-control-allow-origin");
+//		}
+//		if (res.getHeader("Access-Control-Expose-Headers") == null) {
+//			res.addHeader("Access-Control-Expose-Headers", "Authorization");
+//		}
 		
 		if (req.getInputStream() == null) {
 			throw new ServletException("request input stream() is null");

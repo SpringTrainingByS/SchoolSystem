@@ -50,19 +50,19 @@ public class TokenAuthenticationService {
 		
 		System.out.println("JWT: " + JWT.toString());
 		
-		System.out.println("Dodanie nagłówków do odpowiedzi");
+		//System.out.println("Dodanie nagłówków do odpowiedzi");
 		
 		res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
 		
-		if (res.getHeader("Access-Control-Allow-Origin") == null) {
-			res.addHeader("Access-Control-Allow-Origin", "*");
-		}
-		if (res.getHeader("Access-Control-Allow-Headers") == null) {
-			res.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, access-control-allow-origin");
-		}
-		if (res.getHeader("Access-Control-Expose-Headers") == null) {
-			res.addHeader("Access-Control-Expose-Headers", "Authorization");
-		}
+//		if (res.getHeader("Access-Control-Allow-Origin") == null) {
+//			res.addHeader("Access-Control-Allow-Origin", "*");
+//		}
+//		if (res.getHeader("Access-Control-Allow-Headers") == null) {
+//			res.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, access-control-allow-origin");
+//		}
+//		if (res.getHeader("Access-Control-Expose-Headers") == null) {
+//			res.addHeader("Access-Control-Expose-Headers", "Authorization");
+//		}
 		
 	}
 	
