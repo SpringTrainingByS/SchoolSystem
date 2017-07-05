@@ -50,19 +50,8 @@ public class TokenAuthenticationService {
 		
 		System.out.println("JWT: " + JWT.toString());
 		
-		//System.out.println("Dodanie nagłówków do odpowiedzi");
-		
 		res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
 		
-//		if (res.getHeader("Access-Control-Allow-Origin") == null) {
-//			res.addHeader("Access-Control-Allow-Origin", "*");
-//		}
-//		if (res.getHeader("Access-Control-Allow-Headers") == null) {
-//			res.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, access-control-allow-origin");
-//		}
-//		if (res.getHeader("Access-Control-Expose-Headers") == null) {
-//			res.addHeader("Access-Control-Expose-Headers", "Authorization");
-//		}
 		
 	}
 	
@@ -76,11 +65,6 @@ public class TokenAuthenticationService {
 		
 		
 		if (token != null) {
-//			String user = Jwts.parser()
-//					.setSigningKey(SECRET)
-//					.parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
-//					.getBody()
-//					.getSubject();
 			
 			Claims claims = Jwts.parser()
 					.setSigningKey(SECRET)
@@ -90,8 +74,6 @@ public class TokenAuthenticationService {
 			String username = claims.getSubject();
 			
 			String[] roles = Arrays.asList(claims.get(ROLES)).toString().split(",");
-			
-			//System.out.println("role: " + claims.get(ROLES).toString());
 			
 			System.out.println("Role pobrane dla użytkownika " + username + ": ");
 			for (String role : roles ) {

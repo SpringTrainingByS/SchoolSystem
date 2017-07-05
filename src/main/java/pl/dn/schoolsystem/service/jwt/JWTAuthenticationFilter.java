@@ -22,21 +22,6 @@ public class JWTAuthenticationFilter extends GenericFilterBean {
 		
 		HttpServletResponse response = (HttpServletResponse) res;
 		
-		
-//		if (response.getHeader("Access-Control-Allow-Origin") == null) {
-//			response.addHeader("Access-Control-Allow-Origin", "*");
-//		}
-//		if (response.getHeader("Access-Control-Allow-Headers") == null) {
-//			response.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, access-control-allow-origin");
-//		}
-//		if (response.getHeader("Access-Control-Expose-Headers") == null) {
-//			response.addHeader("Access-Control-Expose-Headers", "Authorization");
-//		}
-//		if (response.getHeader("Access-Control-Allow-Methods") == null) {
-//			response.addHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-//		}
-		
-		
 		System.out.println("JWTAuthenticationFilter.doFilter ------------------------------------- ");
 		
 		Authentication authentication = TokenAuthenticationService

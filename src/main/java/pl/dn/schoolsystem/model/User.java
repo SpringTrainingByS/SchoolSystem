@@ -52,8 +52,6 @@ public class User implements UserDetails {
 		this.userId = userId;
 	}
 
-	
-
 	public void setUsername(String userName) {
 		this.username = userName;
 	}
