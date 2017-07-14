@@ -27,13 +27,13 @@ public class TokenAuthenticationService {
 	
 	public static void addAuthentication(HttpServletResponse res, Authentication authResult) {
 		
-		System.out.println("TokenAuthenticationService.addAuthentication()");
-		System.out.println("Budowanie tokenu");
+		//System.out.println("TokenAuthenticationService.addAuthentication()");
+		//System.out.println("Budowanie tokenu");
 		
 		String username = authResult.getName();
 		Collection<? extends GrantedAuthority> authorities = authResult.getAuthorities();
 		
-		System.out.println("authorities length: " + authorities.size());
+		//System.out.println("authorities length: " + authorities.size());
 		
 		authorities.forEach(s -> System.out.println(s.getAuthority()));
 		
@@ -48,7 +48,7 @@ public class TokenAuthenticationService {
 				.signWith(SignatureAlgorithm.HS512, SECRET)
 				.compact();
 		
-		System.out.println("JWT: " + JWT.toString());
+		//System.out.println("JWT: " + JWT.toString());
 		
 		res.addHeader(HEADER_STRING, TOKEN_PREFIX + " " + JWT);
 		
@@ -57,11 +57,11 @@ public class TokenAuthenticationService {
 	
 	public static Authentication getAuthentication(HttpServletRequest request) {
 		
-		System.out.println("TokenAuthenticationService.getAuthentication()");
+		//System.out.println("TokenAuthenticationService.getAuthentication()");
 		
 		String token = request.getHeader(HEADER_STRING);
 		
-		System.out.println("Pobranie headera authorization: " + token);
+		//System.out.println("Pobranie headera authorization: " + token);
 		
 		
 		if (token != null) {
@@ -75,9 +75,9 @@ public class TokenAuthenticationService {
 			
 			String[] roles = Arrays.asList(claims.get(ROLES)).toString().split(",");
 			
-			System.out.println("Role pobrane dla użytkownika " + username + ": ");
+			//System.out.println("Role pobrane dla użytkownika " + username + ": ");
 			for (String role : roles ) {
-				System.out.println(role);
+				//System.out.println(role);
 			}
 			
 			Collection<? extends GrantedAuthority> authorities =
@@ -85,9 +85,9 @@ public class TokenAuthenticationService {
 	                .map(authority -> new Authority(authority.replaceAll("[\\[,\\]]", "")))
 	                .collect(Collectors.toList());
 			
-			System.out.println("User: " + username);
+			//System.out.println("User: " + username);
 			
-			System.out.println("Role po przeparsowaniu: ");
+			//System.out.println("Role po przeparsowaniu: ");
 			authorities.forEach(a -> System.out.println(a.getAuthority()));
 			
 			return username != null ?

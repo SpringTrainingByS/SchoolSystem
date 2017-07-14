@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,11 +19,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import pl.dn.schoolsystem.controller.TestController;
 import pl.dn.schoolsystem.model.User;
 import pl.dn.schoolsystem.service.UserService;
 
 
 public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(JWTLoginFilter.class);
 
 	@Autowired
 	UserService userService; 
@@ -36,33 +41,24 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 			HttpServletResponse res) throws AuthenticationException,
 			IOException, ServletException {
 		
-		System.out.println("Jestem w JwtLogginFilter.attemptAuthentication -------------------------------------");
-		
-		//System.out.println("Dodawanie nagłówków do odpowiedzi.");
-		
-//		if (res.getHeader("Access-Control-Allow-Origin") == null) {
-//			res.addHeader("Access-Control-Allow-Origin", "*");
-//		}
-//		if (res.getHeader("Access-Control-Allow-Headers") == null) {
-//			res.addHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, access-control-allow-origin");
-//		}
-//		if (res.getHeader("Access-Control-Expose-Headers") == null) {
-//			res.addHeader("Access-Control-Expose-Headers", "Authorization");
-//		}
+		//System.out.println("Jestem w JwtLogginFilter.attemptAuthentication -------------------------------------");
+		LOG.debug("Jestem w JwtLogginFilter.attemptAuthentication -------------------------------------");
+
 		
 		if (req.getInputStream() == null) {
+			LOG.debug("Request input stream in null");
 			throw new ServletException("request input stream() is null");
 		}
 		
 		AccountCredentials creds;
-//		= new ObjectMapper()
-//			.readValue(req.getInputStream(), AccountCredentials.class);
+
 		
 		try {
 			creds = new ObjectMapper()
 					.readValue(req.getInputStream(), AccountCredentials.class);
 		}
 		catch (Exception e) {
+			LOG.debug("");
 			return null;
 		}
 		
@@ -83,10 +79,11 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 	protected void successfulAuthentication(HttpServletRequest request,
 			HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
+		LOG.info("Jestem w JWTLogginFilter.successfulAuthentication -------------------------------------- ");
+		//System.out.println("Jestem w JWTLogginFilter.successfulAuthentication -------------------------------------- ");
 		
-		System.out.println("Jestem w JWTLogginFilter.successfulAuthentication -------------------------------------- ");
-		
-		System.out.println("authResult.getName(): " + authResult.getName());
+		LOG.info("authResult.getName(): " + authResult.getName());
+		//System.out.println("authResult.getName(): " + authResult.getName());
 		
 		TokenAuthenticationService.addAuthentication(response, authResult);
 		
