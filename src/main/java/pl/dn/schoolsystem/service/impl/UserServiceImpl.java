@@ -13,7 +13,10 @@ import org.springframework.stereotype.Service;
 
 import pl.dn.schoolsystem.dao.RoleDao;
 import pl.dn.schoolsystem.dao.UserDao;
+import pl.dn.schoolsystem.dao.UserRoleDao;
+import pl.dn.schoolsystem.jsonMapper.UserMapper;
 import pl.dn.schoolsystem.model.User;
+import pl.dn.schoolsystem.model.security.Role;
 import pl.dn.schoolsystem.model.security.UserRole;
 import pl.dn.schoolsystem.service.UserService;
 
@@ -30,6 +33,12 @@ public class UserServiceImpl implements UserService {
 	private RoleDao roleDao;
 	
 	@Autowired
+	UserServiceMapper userServiceMapper;
+	
+	@Autowired
+	UserRoleDao userRoleDao;
+	
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	public void save(User user) {
@@ -44,28 +53,31 @@ public class UserServiceImpl implements UserService {
         return userDao.findByEmail(email);
     }
     
-    public User createUser(User user, Set<UserRole> userRoles) {
-        User localUser = userDao.findByUsername(user.getUsername());
+    public void addUser(UserMapper userMapper) throws Exception {
+    	User user = userServiceMapper.persistence(userMapper);
+    	
+    	if (checkUserExists(user.getUsername(), user.getEmail())) {
+    		LOG.debug("UserName already exists");
+    		throw new Exception("Username already exists.");
+    	}
+    	
+    	String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
+    	
+		user = saveUser(user);
+		
+		int id = userMapper.getUserRoles().get(0).getRoleId();
 
-        if (localUser != null) {
-            LOG.info("User with username {} already exist. Nothing will be done. ", user.getUsername());
-        } else {
-            String encryptedPassword = passwordEncoder.encode(user.getPassword());
-            user.setPassword(encryptedPassword);
-
-            for (UserRole ur : userRoles) {
-                roleDao.save(ur.getRole());
-            }
-
-            user.getUserRoles().addAll(userRoles);
-
-          
-
-            localUser = userDao.save(user);
-        }
-
-        return localUser;
+		Role role = roleDao.findByRoleId(id);
+		
+		UserRole userRole = new UserRole();
+		userRole.setRole(role);
+		userRole.setUser(user);
+		
+		userRoleDao.save(userRole);	
     }
+    
+    
     
     public boolean checkUserExists(String username, String email){
         if (checkUsernameExists(username) || checkEmailExists(username)) {

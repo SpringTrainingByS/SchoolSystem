@@ -3,6 +3,7 @@ package pl.dn.schoolsystem.service;
 import java.util.List;
 import java.util.Set;
 
+import pl.dn.schoolsystem.jsonMapper.UserMapper;
 import pl.dn.schoolsystem.model.User;
 import pl.dn.schoolsystem.model.security.UserRole;
 
@@ -17,9 +18,9 @@ public interface UserService {
 
     boolean checkEmailExists(String email);
     
-    void save (User user);
+    void addUser(UserMapper userMapper) throws Exception;
     
-    User createUser(User user, Set<UserRole> userRoles);
+    void save (User user);
     
     User saveUser (User user); 
     

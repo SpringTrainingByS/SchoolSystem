@@ -16,14 +16,12 @@ public class TestController {
 	@RequestMapping("/user")
 	public @ResponseBody String getUser() {
 		LOG.debug("URL: /user");
-		LOG.info("URL: /user");
 		return "Dariusz Nurzyński";
 	}
 	
 	@RequestMapping("/admin/info")
 	public @ResponseBody String getAdmiInfo() {
 		LOG.debug("URL: /admin/info");
-		LOG.info("URL: /user");
 		return "Jesteś adminem";
 	}
 }
