@@ -79,8 +79,6 @@ public class JWTLoginFilter extends AbstractAuthenticationProcessingFilter {
 	protected void successfulAuthentication(HttpServletRequest request,
 			HttpServletResponse response, FilterChain chain,
 			Authentication authResult) throws IOException, ServletException {
-		LOG.info("Jestem w JWTLogginFilter.successfulAuthentication -------------------------------------- ");
-		//System.out.println("Jestem w JWTLogginFilter.successfulAuthentication -------------------------------------- ");
 		
 		LOG.info("authResult.getName(): " + authResult.getName());
 		//System.out.println("authResult.getName(): " + authResult.getName());

@@ -1,0 +1,40 @@
+18:16:16.558 [main] INFO  p.d.schoolsystem.BackendApplication - Starting BackendApplication on LAPTOP-21MSVO32 with PID 8836 (C:\Users\User\workspace\backend\target\classes started by User in C:\Users\User\workspace\backend) 
+18:16:16.564 [main] DEBUG p.d.schoolsystem.BackendApplication - Running with Spring Boot v1.5.4.RELEASE, Spring v4.3.9.RELEASE 
+18:16:16.564 [main] INFO  p.d.schoolsystem.BackendApplication - No active profile set, falling back to default profiles: default 
+18:16:20.052 [localhost-startStop-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Initializing filter 'jwtLoginFilter' 
+18:16:20.052 [localhost-startStop-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Filter 'jwtLoginFilter' configured successfully 
+18:16:21.097 [main] INFO  p.d.schoolsystem.BackendApplication - Started BackendApplication in 4.708 seconds (JVM running for 5.397) 
+18:16:42.568 [http-nio-8080-exec-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Request is to process authentication 
+18:16:42.569 [http-nio-8080-exec-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Jestem w JwtLogginFilter.attemptAuthentication ------------------------------------- 
+18:16:43.120 [http-nio-8080-exec-1] INFO  p.d.s.service.jwt.JWTLoginFilter - authResult.getName(): admin 
+18:17:26.229 [http-nio-8080-exec-2] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:17:26.268 [http-nio-8080-exec-2] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:18:38.865 [http-nio-8080-exec-3] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:18:38.870 [http-nio-8080-exec-3] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:18:48.483 [http-nio-8080-exec-4] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:18:48.486 [http-nio-8080-exec-4] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:20:46.676 [http-nio-8080-exec-5] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:20:46.680 [http-nio-8080-exec-5] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:22:17.107 [http-nio-8080-exec-6] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:22:17.111 [http-nio-8080-exec-6] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:26:03.956 [http-nio-8080-exec-7] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:26:03.960 [http-nio-8080-exec-7] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:29:21.130 [http-nio-8080-exec-8] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:29:21.134 [http-nio-8080-exec-8] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:29:47.628 [http-nio-8080-exec-9] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:29:47.630 [http-nio-8080-exec-9] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:30:25.771 [http-nio-8080-exec-10] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:30:25.775 [http-nio-8080-exec-10] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:30:39.659 [http-nio-8080-exec-1] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:30:39.662 [http-nio-8080-exec-1] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+18:32:03.053 [http-nio-8080-exec-2] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+18:32:03.056 [http-nio-8080-exec-2] DEBUG p.d.s.controller.RoleManagement - URL: /role/all (GET) 
+19:01:03.757 [main] INFO  p.d.schoolsystem.BackendApplication - Starting BackendApplication on LAPTOP-21MSVO32 with PID 8340 (C:\Users\User\workspace\backend\target\classes started by User in C:\Users\User\workspace\backend) 
+19:01:03.759 [main] DEBUG p.d.schoolsystem.BackendApplication - Running with Spring Boot v1.5.4.RELEASE, Spring v4.3.9.RELEASE 
+19:01:03.759 [main] INFO  p.d.schoolsystem.BackendApplication - No active profile set, falling back to default profiles: default 
+19:01:06.861 [localhost-startStop-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Initializing filter 'jwtLoginFilter' 
+19:01:06.862 [localhost-startStop-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Filter 'jwtLoginFilter' configured successfully 
+19:01:07.826 [main] INFO  p.d.schoolsystem.BackendApplication - Started BackendApplication in 4.221 seconds (JVM running for 4.807) 
+19:01:19.746 [http-nio-8080-exec-2] DEBUG p.d.s.service.jwt.JWTLoginFilter - Request is to process authentication 
+19:01:19.747 [http-nio-8080-exec-2] DEBUG p.d.s.service.jwt.JWTLoginFilter - Jestem w JwtLogginFilter.attemptAuthentication ------------------------------------- 
+19:01:20.273 [http-nio-8080-exec-2] INFO  p.d.s.service.jwt.JWTLoginFilter - authResult.getName(): student 

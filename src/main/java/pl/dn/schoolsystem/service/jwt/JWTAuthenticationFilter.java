@@ -30,14 +30,12 @@ public class JWTAuthenticationFilter extends GenericFilterBean {
 		
 		HttpServletResponse response = (HttpServletResponse) res;
 		
-		//System.out.println("JWTAuthenticationFilter.doFilter ------------------------------------- ");
-		
 		Authentication authentication = TokenAuthenticationService
 				.getAuthentication((HttpServletRequest) req);
 		
 		if (authentication == null) {
 			LOG.debug("authentication == null");
-			//System.out.println("authentication == null");
+			throw new IOException("Authentication header is null");
 		}
 		
 		SecurityContextHolder.getContext().setAuthentication(authentication);

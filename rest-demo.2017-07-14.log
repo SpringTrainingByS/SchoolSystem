@@ -1,0 +1,20 @@
+16:15:31.113 [main] INFO  p.d.schoolsystem.BackendApplication - Starting BackendApplication on LAPTOP-21MSVO32 with PID 11584 (C:\Users\User\workspace\backend\target\classes started by User in C:\Users\User\workspace\backend) 
+16:15:31.115 [main] DEBUG p.d.schoolsystem.BackendApplication - Running with Spring Boot v1.5.4.RELEASE, Spring v4.3.9.RELEASE 
+16:15:31.115 [main] INFO  p.d.schoolsystem.BackendApplication - No active profile set, falling back to default profiles: default 
+16:15:34.380 [localhost-startStop-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Initializing filter 'jwtLoginFilter' 
+16:15:34.380 [localhost-startStop-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Filter 'jwtLoginFilter' configured successfully 
+16:15:35.380 [main] INFO  p.d.schoolsystem.BackendApplication - Started BackendApplication in 4.43 seconds (JVM running for 4.992) 
+16:16:06.729 [http-nio-8080-exec-1] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+16:16:06.925 [http-nio-8080-exec-1] DEBUG p.d.s.controller.TestController - URL: /admin/info 
+17:00:33.491 [main] INFO  p.d.schoolsystem.BackendApplication - Starting BackendApplication on LAPTOP-21MSVO32 with PID 3168 (C:\Users\User\workspace\backend\target\classes started by User in C:\Users\User\workspace\backend) 
+17:00:33.494 [main] DEBUG p.d.schoolsystem.BackendApplication - Running with Spring Boot v1.5.4.RELEASE, Spring v4.3.9.RELEASE 
+17:00:33.495 [main] INFO  p.d.schoolsystem.BackendApplication - No active profile set, falling back to default profiles: default 
+17:00:36.994 [localhost-startStop-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Initializing filter 'jwtLoginFilter' 
+17:00:36.994 [localhost-startStop-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Filter 'jwtLoginFilter' configured successfully 
+17:00:37.996 [main] INFO  p.d.schoolsystem.BackendApplication - Started BackendApplication in 4.694 seconds (JVM running for 5.289) 
+17:01:09.372 [http-nio-8080-exec-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Request is to process authentication 
+17:01:09.372 [http-nio-8080-exec-1] DEBUG p.d.s.service.jwt.JWTLoginFilter - Jestem w JwtLogginFilter.attemptAuthentication ------------------------------------- 
+17:01:09.897 [http-nio-8080-exec-1] INFO  p.d.s.service.jwt.JWTLoginFilter - Jestem w JWTLogginFilter.successfulAuthentication --------------------------------------  
+17:01:09.897 [http-nio-8080-exec-1] INFO  p.d.s.service.jwt.JWTLoginFilter - authResult.getName(): admin 
+17:01:13.285 [http-nio-8080-exec-2] DEBUG p.d.s.controller.TestController - JWTAuthenticationFilter.doFilterr ----------------------------------------------- 
+17:01:13.327 [http-nio-8080-exec-2] DEBUG p.d.s.controller.UserManagment - URL: /role/all  
